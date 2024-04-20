@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Layout, Menu } from 'antd'
 const { Sider } = Layout;
 
 function TransactionHistory() {
+  const expenses = useSelector(state => state.expenses);
+  const dispatch = useDispatch();
+
   return (
     <Sider
         width={300}
         theme="dark"  
         style={{ height: '100vh' }}     
     >
-      
+      <h2>Your Transaction History</h2>      
       <Menu
         mode="inline"
         defaultSelectedKeys={['1']}
@@ -17,12 +22,11 @@ function TransactionHistory() {
         style={{ height: '100%', borderRight: 0 }}
         theme="dark"
       >
-        <Menu.Item key="3" >
-           Your Transaction History
-        </Menu.Item>
-        <Menu.Item key="4" >
-          Burger King
-        </Menu.Item>
+        {expenses.map(expense => (
+        <Menu.Item key={expense.id} >
+            {expense.description} - Rs.{expense.amount}
+          </Menu.Item>
+        ))}
       </Menu>
      </Sider>
       
