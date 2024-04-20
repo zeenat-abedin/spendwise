@@ -3,24 +3,20 @@ import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@an
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-function Dashboard() {
-    const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+function Dashboard() {   
 
   return (
     <Layout>
      <Sider
-      style={{
-        background: colorBgContainer,
-      }}
-      width={200}
+        width={200}
+        theme="dark"
     >
       <Menu
         mode="inline"
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
+        theme="dark"
       >
         <SubMenu key="sub1" icon={<DollarCircleOutlined />} title="Bills & Payments">
           <Menu.Item key="1">Bill Management</Menu.Item>
