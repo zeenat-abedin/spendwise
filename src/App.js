@@ -6,15 +6,9 @@ import WelcomeScreen from './components/WelcomeScreen';
 
 const router = createBrowserRouter([
   {
+    path: '/',
     element: <AppLayout />,
     errorElement: <Error />,
-
-    children: [
-      {
-        path: '/',
-        element: <WelcomeScreen />,
-      },
-    ],
   },
 ]);
 
