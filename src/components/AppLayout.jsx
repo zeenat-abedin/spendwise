@@ -18,8 +18,7 @@ function AppLayout() {
   return (
     <div>
       <Header />
-      {/* <Dashboard /> */}
-      <ExpenseForm/>
+      <Dashboard />
       <Outlet />
       <Modal open={isModalOpen} onCancel={handleModalClose} footer={null}>
         <WelcomeScreen onClose={handleModalClose} />
