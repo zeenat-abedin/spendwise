@@ -6,6 +6,9 @@ import { Modal } from "antd";
 import Header from "./Header";
 import Dashboard from "./Dashboard";
 import WelcomeScreen from "./WelcomeScreen";
+import TransactionHistory from "./TransactionHistory";
+import Chart from "./Chart";
+import MainContent from "./MainContent";
 
 function AppLayout() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -17,7 +20,8 @@ function AppLayout() {
   return (
     <div>
       <Header />
-      <Dashboard/>
+      <Dashboard />
+      <MainContent/>
       <Outlet />
       <Modal open={isModalOpen} onCancel={handleModalClose} footer={null}>
         <WelcomeScreen onClose={handleModalClose} />
