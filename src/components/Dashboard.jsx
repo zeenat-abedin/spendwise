@@ -1,10 +1,30 @@
-import React from 'react'
+import {Layout, Menu, theme } from 'antd'
+const { Sider } = Layout;
 
 function Dashboard() {
+    const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <div>
-      hello world
-    </div>
+    <Layout>
+     <Sider
+      style={{
+        background: colorBgContainer,
+      }}
+      width={200}
+    >
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        style={{
+          height: '100%',
+        }}
+        items=""
+      />
+      </Sider>
+    </Layout>
   )
 }
 
