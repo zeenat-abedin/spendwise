@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+let nextExpenseId = 1;
+
 const initialState = {
-  expenses: []
+    expenses: [
+        {
+            id: 1,
+            description: "",
+            amount: ""
+        }
+  ]
 };
 
 export const expenseSlice = createSlice({
@@ -9,8 +17,13 @@ export const expenseSlice = createSlice({
   initialState,
   reducers: {
     addExpense(state, action) {
-      state.expenses = action.payload
-    },
+    const { description, amount } = action.payload;
+      state.expenses.push({
+        id: nextExpenseId++,
+        description,
+        amount
+      })
+      },
     deleteExpense: (state, action) => {
       state.expenses = state.expenses.filter(expense => expense.id !== action.payload);
     }

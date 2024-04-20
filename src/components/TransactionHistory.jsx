@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useSelector } from 'react-redux';
 
 import { Layout, Menu } from 'antd'
 const { Sider } = Layout;
 
 function TransactionHistory() {
-  const expenses = useSelector(state => state.expenses);
-  const dispatch = useDispatch();
+  const description = useSelector(state => state.expenses.description);
+  const amount = useSelector(state => state.expenses.amount);
+
+  const id = useSelector(state => state.expenses.id);
 
   return (
     <Sider
@@ -22,11 +24,9 @@ function TransactionHistory() {
         style={{ height: '100%', borderRight: 0 }}
         theme="dark"
       >
-        {expenses.map(expense => (
-        <Menu.Item key={expense.id} >
-            {expense.description} - Rs.{expense.amount}
+        <Menu.Item key={id} >
+            {description} - Rs.{amount}
           </Menu.Item>
-        ))}
       </Menu>
      </Sider>
       

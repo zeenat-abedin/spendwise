@@ -6,7 +6,6 @@ import { Modal } from "antd";
 import Header from "./Header";
 import Dashboard from "./Dashboard";
 import WelcomeScreen from "./WelcomeScreen";
-import ExpenseForm from "./ExpenseForm";
 
 function AppLayout() {
   const [isModalOpen, setIsModalOpen] = useState(true);
