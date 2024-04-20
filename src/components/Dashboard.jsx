@@ -31,8 +31,8 @@ function Dashboard() {
           My Stats
         </Menu.Item>
       </Menu>
-      </Sider>
-      <MainContent/>
+     </Sider>
+     <MainContent/>
     </Layout>
   )
 }
