@@ -24,7 +24,7 @@ const ButtonContainer = styled.div`
           SPENDWISE
         </HeaderText>
       </Link>
-      <ButtonContainer style={{display: 'flex', justifyContent: "flex-end", alignItems: 'center', gap: '0.5rem', marginBottom: '2rem'}}>
+      <ButtonContainer style={{display: 'flex', justifyContent: "flex-end", alignItems: 'center', gap: '0.5rem'}}>
       <Button type='primary'>
         Log Credit
       </Button>
