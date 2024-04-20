@@ -5,10 +5,13 @@ import { Layout, Menu } from 'antd'
 const { Sider } = Layout;
 
 function TransactionHistory() {
-  const description = useSelector(state => state.expenses.description);
-  const amount = useSelector(state => state.expenses.amount);
+  const expenses = useSelector(state => state.expenses);
+  const { description, amount, id } = expenses[0];
+  console.log(expenses);
 
-  const id = useSelector(state => state.expenses.id);
+  if (expenses.length === 0) {
+    return <div>No transactions yet.</div>;
+  }
 
   return (
     <Sider

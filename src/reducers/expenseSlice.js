@@ -3,13 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 let nextExpenseId = 1;
 
 const initialState = {
-    expenses: [
-        {
-            id: 1,
-            description: "",
-            amount: ""
-        }
-  ]
+    expenses: []
 };
 
 export const expenseSlice = createSlice({

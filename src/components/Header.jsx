@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button, Layout } from 'antd';
 
-function Header() {
-
 const HeaderText = styled.div`
   font-size: 2rem;
   font-weight: bold;
@@ -16,7 +14,8 @@ const ButtonContainer = styled.div`
     background-color: black;
   }
 `;
-  
+
+function Header() {
   return (
     <Layout>
       <Link to="/" >
