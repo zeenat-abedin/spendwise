@@ -1,13 +1,10 @@
-import { Col, Layout, Row } from 'antd'
+import { Col, Row } from 'antd'
 
 import Chart from './Chart'
 import TransactionHistory from './TransactionHistory'
 
-const { Content } = Layout
-
 function MainContent() {
   return (
-    <Layout>
             <div>
               <Row gutter={8}>
                 <Col span={18}>
@@ -18,7 +15,6 @@ function MainContent() {
                 </Col>
               </Row>
             </div>
-    </Layout>
   )
 }
 

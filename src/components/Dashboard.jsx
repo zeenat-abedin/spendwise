@@ -1,5 +1,6 @@
 import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
+import MainContent from './MainContent';
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -31,6 +32,7 @@ function Dashboard() {
         </Menu.Item>
       </Menu>
       </Sider>
+      <MainContent/>
     </Layout>
   )
 }
