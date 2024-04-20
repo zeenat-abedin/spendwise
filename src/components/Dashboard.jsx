@@ -1,4 +1,4 @@
-import { Layout, Menu, theme } from 'antd'
+import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -9,7 +9,8 @@ function Dashboard() {
     <Layout>
      <Sider
         width={200}
-        theme="dark"
+        theme="dark"  
+        style={{ height: '100vh' }}     
     >
       <Menu
         mode="inline"
