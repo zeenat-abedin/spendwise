@@ -1,8 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-import { Layout } from 'antd'
-const { Sider } = Layout;
+import { Table } from 'antd'
 
 function TransactionHistory() {
   const expenses = useSelector(state => state.expenses) || [];
@@ -13,7 +12,7 @@ function TransactionHistory() {
   }
 
   return (
-    <Sider
+    <Table
         width={300}
         theme="dark"  
         style={{ height: '100vh' }}     
@@ -33,7 +32,7 @@ function TransactionHistory() {
         );
       })}
     </div>
-    </Sider>
+    </Table>
       
   )
 }

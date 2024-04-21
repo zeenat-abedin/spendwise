@@ -24,7 +24,8 @@ function Dashboard() {
   {
     key: '2',
     icon: <AccountBookOutlined />,
-    label: 'Expenses',
+    label: 'Transaction History',
+    path: '/transaction-history',
   },
   {
     key: '3',
@@ -45,8 +46,13 @@ function Dashboard() {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
-          theme="dark"
-          items={menuItems}
+        theme="dark"
+        items={menuItems}
+        onClick={({ key }) => {
+              if (key === '2') {
+                window.location.href = '/transaction-history';
+        }
+      }}
       />
       </Sider>
      <MainContent/>

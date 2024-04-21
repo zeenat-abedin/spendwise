@@ -2,13 +2,20 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import AppLayout from './components/AppLayout';
 import Error from './components/Error';
+import TransactionHistory from './components/TransactionHistory';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
     errorElement: <Error />,
-  },
+    children: [
+      {
+        path: '/transaction-history',
+        element: <TransactionHistory />,
+      },
+    ]
+  }
 ]);
 
 function App() {
