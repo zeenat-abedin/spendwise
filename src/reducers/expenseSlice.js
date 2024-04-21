@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-let nextExpenseId = 1;
-
 const initialState = {
     expenses: []
 };
@@ -11,9 +9,11 @@ export const expenseSlice = createSlice({
   initialState,
   reducers: {
     addExpense(state, action) {
-    const { description, amount } = action.payload;
+      const { description, amount } = action.payload;
+      const id = crypto.randomUUID();
+
       state.expenses.push({
-        id: nextExpenseId++,
+        id,
         description,
         amount
       })

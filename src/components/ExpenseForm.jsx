@@ -6,6 +6,7 @@ import { Button, Form, Input } from 'antd';
 import { addExpense } from '../reducers/expenseSlice';
 
 function ExpenseForm() {
+  const id = crypto.randomUUID();
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
 
@@ -42,7 +43,9 @@ function ExpenseForm() {
   };
 
   const handleSubmit = () => {
-    dispatch(addExpense({ description, amount }));
+    if (!description || !amount) return;
+
+    dispatch(addExpense({ id, description, amount }));
     handleCancel()
   };
  
