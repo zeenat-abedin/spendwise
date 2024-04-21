@@ -1,16 +1,10 @@
-import { useState } from 'react';
-
 import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import MainContent from './MainContent';
-import ExpenseForm from './ExpenseForm';
-
 const { Sider } = Layout;
 
 function Dashboard() {   
-  const [showExpenseForm, setShowExpenseForm] = useState(false);
-
   const menuItems = [
   {
     key: '1',
@@ -30,8 +24,7 @@ function Dashboard() {
   {
     key: '2',
     icon: <AccountBookOutlined />,
-    label: 'Expense Form',
-    onClick: () => setShowExpenseForm(true),
+    label: 'Expenses',
   },
   {
     key: '3',
@@ -56,7 +49,6 @@ function Dashboard() {
           items={menuItems}
       />
       </Sider>
-      {showExpenseForm && <ExpenseForm onClose={() => setShowExpenseForm(false)} />}
      <MainContent/>
     </Layout>
   )

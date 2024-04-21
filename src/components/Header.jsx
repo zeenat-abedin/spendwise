@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { Button, Layout } from 'antd';
+import { useState } from 'react';
+import ExpenseForm from './ExpenseForm';
 
 const HeaderText = styled.div`
   font-size: 2rem;
@@ -16,6 +18,12 @@ const ButtonContainer = styled.div`
 `;
 
 function Header() {
+    const [showForm, setShowForm] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowForm(true);
+  };
+  
   return (
     <Layout>
       <Link to="/" >
@@ -27,10 +35,11 @@ function Header() {
       <Button type='primary'>
         Log Credit
       </Button>
-      <Button type='primary'>
+      <Button type='primary' onClick={handleButtonClick}>
         Log An Expense
         </Button>
       </ButtonContainer>
+       {showForm && <ExpenseForm onClose={() => setShowForm(false)}/>}
     </Layout>
   );
 }
