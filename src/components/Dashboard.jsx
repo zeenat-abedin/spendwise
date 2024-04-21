@@ -4,6 +4,7 @@ import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import MainContent from './MainContent';
+import ExpenseForm from './ExpenseForm';
 
 const { Sider } = Layout;
 
@@ -54,7 +55,8 @@ function Dashboard() {
           theme="dark"
           items={menuItems}
       />
-        </Sider>
+      </Sider>
+      {showExpenseForm && <ExpenseForm onClose={() => setShowExpenseForm(false)} />}
      <MainContent/>
     </Layout>
   )

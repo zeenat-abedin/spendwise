@@ -1,12 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 const { Sider } = Layout;
 
 function TransactionHistory() {
-  const expenses = useSelector(state => state.expenses);
-  const { description, amount, id } = expenses[0];
+  const expenses = useSelector(state => state.expenses) || [];
   console.log(expenses);
 
   if (expenses.length === 0) {
@@ -20,18 +19,21 @@ function TransactionHistory() {
         style={{ height: '100vh' }}     
     >
       <h2>Your Transaction History</h2>      
-      <Menu
-        mode="inline"
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        style={{ height: '100%', borderRight: 0 }}
-        theme="dark"
-      >
-        <Menu.Item key={id} >
-            {description} - Rs.{amount}
-          </Menu.Item>
-      </Menu>
-     </Sider>
+      <div>
+      {expenses.map((expense, index) => {
+        if (!expense ||!expense.description ||!expense.amount) {
+          return null;
+        }
+
+        return (
+          <div key={index}>
+            <p>Description: {expense.description}</p>
+            <p>Amount: {expense.amount}</p>
+          </div>
+        );
+      })}
+    </div>
+    </Sider>
       
   )
 }
