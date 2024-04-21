@@ -1,8 +1,10 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { Button, Layout, Modal } from 'antd';
-import { useState } from 'react';
+import { addExpense } from '../reducers/expenseSlice';
 import ExpenseForm from './ExpenseForm';
 
 const HeaderText = styled.div`
@@ -19,13 +21,26 @@ const ButtonContainer = styled.div`
 
 function Header() {
   const [showForm, setShowForm] = useState(false);
+  const [result, setResult] = useState(null);
+    const dispatch = useDispatch();
+  const expenses = useSelector(state => state.expenses)
+
 
   const handleButtonClick = () => {
-    setShowForm(true);
+    const description = 'Sample expense'
+    const amount = 10
+    dispatch(addExpense({ description, amount }))
+    setShowForm(true)  
   };
 
   const handleCancel = () => {
     setShowForm(false);
+  };
+
+  const handleSubmit = (expenses) => { 
+    console.log('Expenses:', expenses);
+   setResult(expenses);
+   setShowForm(false);
   };
   
   return (
@@ -39,7 +54,7 @@ function Header() {
       <Button type='primary'>
         Log Credit
       </Button>
-      <Button type='primary' onClick={handleButtonClick}>
+      <Button type='primary' onClick={handleButtonClick} >
         Log An Expense
         </Button>
       </ButtonContainer>
@@ -50,7 +65,7 @@ function Header() {
         footer={null}
         style={{ top: 20 }}
       >
-        <ExpenseForm onClose={handleCancel} />
+        <ExpenseForm onClose={handleCancel} onSubmit={handleSubmit} />
       </Modal>
     </Layout>
   );

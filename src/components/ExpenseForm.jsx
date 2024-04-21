@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import { Button, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input, Spin } from 'antd';
 
 import { addExpense } from '../reducers/expenseSlice';
 
-function ExpenseForm() {
+function ExpenseForm({ onClose, onSubmit, expenses }) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const formItemLayout = {
@@ -37,29 +40,20 @@ function ExpenseForm() {
     setAmount(e.target.value);
   };
   const handleCancel = () => {
-    setDescription('');
-    setAmount('');
+    onClose()
   };
 
-  const handleSubmit = () => {
-    if (!description || !amount) return;
-     
-    const newExpense = {
-      description,
-      amount,
-    };
-    dispatch(addExpense(newExpense));
-    handleCancel()
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(expenses)
   };
  
   return (
       <Form
         {...formItemLayout}
-        variant="filled"
-        style={{
-        maxWidth: 800,
-        }}
-      onFinish={handleSubmit}
+        layout="vertical"
+        onFinish={handleSubmit}
+        style={{ maxWidth: 600 }}
     >
       
       <Form.Item
@@ -89,7 +83,7 @@ function ExpenseForm() {
       <Button type="primary" htmlType="submit">
         Submit
       </Button>
-    </Form>
+      </Form>
   );
 }
 

@@ -1,8 +1,8 @@
+import { Route, useNavigate } from 'react-router-dom';
 import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import MainContent from './MainContent';
-import { Route, useNavigate } from 'react-router-dom';
 import TransactionHistory from './TransactionHistory';
 const { Sider } = Layout;
 
