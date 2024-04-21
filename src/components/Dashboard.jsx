@@ -66,9 +66,7 @@ function Dashboard() {
         }}
       />
       </Sider>
-      <MainContent>
-        <Route path="/transaction-history" component={TransactionHistory} />
-      </MainContent>
+      <MainContent/>
     </Layout>
   )
 }

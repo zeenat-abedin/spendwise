@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { Button, Layout, Modal } from 'antd';
@@ -29,6 +28,8 @@ function Header() {
   const handleButtonClick = () => {
     const description = 'Sample expense'
     const amount = 10
+    const newExpense = { description, amount };
+    setResult(newExpense);
     dispatch(addExpense({ description, amount }))
     setShowForm(true)  
   };
@@ -45,11 +46,9 @@ function Header() {
   
   return (
     <Layout>
-      <Link to="/" >
         <HeaderText>
           SPENDWISE
         </HeaderText>
-      </Link>
       <ButtonContainer style={{display: 'flex', justifyContent: "flex-end", alignItems: 'center', gap: '0.5rem'}}>
       <Button type='primary'>
         Log Credit

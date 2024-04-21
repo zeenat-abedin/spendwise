@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Spin } from 'antd';
-
-import { addExpense } from '../reducers/expenseSlice';
+import { Button, Form, Input } from 'antd';
 
 function ExpenseForm({ onClose, onSubmit, expenses }) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const formItemLayout = {
   labelCol: {
@@ -52,7 +43,7 @@ function ExpenseForm({ onClose, onSubmit, expenses }) {
       <Form
         {...formItemLayout}
         layout="vertical"
-        onFinish={handleSubmit}
+        onFinish={handleSubmit}     
         style={{ maxWidth: 600 }}
     >
       

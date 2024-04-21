@@ -13,9 +13,9 @@ function TransactionHistory() {
 
   const columns = [
   {
-    title: 'Expense name',
-    dataIndex: 'expense-name',
-    key: 'expense-name',
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
   },
   {
     title: 'Amount',
