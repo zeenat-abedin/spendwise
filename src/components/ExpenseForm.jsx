@@ -51,7 +51,7 @@ function ExpenseForm() {
         {...formItemLayout}
         variant="filled"
         style={{
-        maxWidth: 600,
+        maxWidth: 800,
         }}
       onFinish={handleSubmit}
     >

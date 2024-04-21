@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { Button, Layout } from 'antd';
+import { Button, Layout, Modal } from 'antd';
 import { useState } from 'react';
 import ExpenseForm from './ExpenseForm';
 
@@ -18,10 +18,14 @@ const ButtonContainer = styled.div`
 `;
 
 function Header() {
-    const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const handleButtonClick = () => {
     setShowForm(true);
+  };
+
+  const handleCancel = () => {
+    setShowForm(false);
   };
   
   return (
@@ -39,7 +43,15 @@ function Header() {
         Log An Expense
         </Button>
       </ButtonContainer>
-       {showForm && <ExpenseForm onClose={() => setShowForm(false)}/>}
+       <Modal
+        title="Log An Expense"
+        open={showForm}
+        onCancel={handleCancel}
+        footer={null}
+        style={{ top: 20 }}
+      >
+        <ExpenseForm onClose={handleCancel} />
+      </Modal>
     </Layout>
   );
 }
