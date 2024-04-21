@@ -4,13 +4,40 @@ import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import MainContent from './MainContent';
-import ExpenseForm from './ExpenseForm';
 
 const { Sider } = Layout;
-const { SubMenu } = Menu;
 
 function Dashboard() {   
   const [showExpenseForm, setShowExpenseForm] = useState(false);
+
+  const menuItems = [
+  {
+    key: '1',
+    icon: <DollarCircleOutlined />,
+    label: 'Bills & Payments',
+    submenu: [
+      {
+        key: '1-1',
+        label: 'Bill Management',
+      },
+      {
+        key: '1-2',
+        label: 'Payment History',
+      },
+    ],
+  },
+  {
+    key: '2',
+    icon: <AccountBookOutlined />,
+    label: 'Expense Form',
+    onClick: () => setShowExpenseForm(true),
+  },
+  {
+    key: '3',
+    icon: <BarChartOutlined />,
+    label: 'My Stats',
+  },
+];
 
   return (
     <Layout>
@@ -24,21 +51,10 @@ function Dashboard() {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
-        theme="dark"
-      >
-        <SubMenu key="sub1" icon={<DollarCircleOutlined />} title="Bills & Payments">
-          <Menu.Item key="1">Bill Management</Menu.Item>
-          <Menu.Item key="2">Payment History</Menu.Item>
-        </SubMenu>
-        <Menu.Item key="3" icon={<AccountBookOutlined />} onClick={() => setShowExpenseForm(true)}>
-          Expense Form
-        </Menu.Item>
-        <Menu.Item key="4" icon={<BarChartOutlined />}>
-          My Stats
-        </Menu.Item>
-      </Menu>
-      </Sider>
-       {showExpenseForm && <ExpenseForm onClose={() => setShowExpenseForm(false)} />}
+          theme="dark"
+          items={menuItems}
+      />
+        </Sider>
      <MainContent/>
     </Layout>
   )
