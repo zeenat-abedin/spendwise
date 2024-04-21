@@ -2,24 +2,20 @@ import { Layout, Menu } from 'antd'
 import { DollarCircleOutlined, AccountBookOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import MainContent from './MainContent';
+import { Route, useNavigate } from 'react-router-dom';
+import TransactionHistory from './TransactionHistory';
 const { Sider } = Layout;
 
 function Dashboard() {   
+    const navigate = useNavigate();
+
   const menuItems = [
   {
     key: '1',
     icon: <DollarCircleOutlined />,
     label: 'Bills & Payments',
-    submenu: [
-      {
-        key: '1-1',
-        label: 'Bill Management',
-      },
-      {
-        key: '1-2',
-        label: 'Payment History',
-      },
-    ],
+    path: '/bills-and-payments'
+   
   },
   {
     key: '2',
@@ -31,8 +27,25 @@ function Dashboard() {
     key: '3',
     icon: <BarChartOutlined />,
     label: 'My Stats',
+    path: '/my-stats'
   },
-];
+  ];
+  
+  const handleMenuItemClick = (key) => {
+  switch (key) {
+    case '1':
+      navigate('/bills-and-payments');
+      break;
+    case '2':
+      navigate('/transaction-history');
+      break;
+    case '3':
+      navigate('/my-stats');
+      break;
+    default:
+      break;
+  }
+};
 
   return (
     <Layout>
@@ -49,13 +62,13 @@ function Dashboard() {
         theme="dark"
         items={menuItems}
         onClick={({ key }) => {
-              if (key === '2') {
-                window.location.href = '/transaction-history';
-        }
-      }}
+        handleMenuItemClick(key);
+        }}
       />
       </Sider>
-     <MainContent/>
+      <MainContent>
+        <Route path="/transaction-history" component={TransactionHistory} />
+      </MainContent>
     </Layout>
   )
 }

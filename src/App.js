@@ -14,6 +14,14 @@ const router = createBrowserRouter([
         path: '/transaction-history',
         element: <TransactionHistory />,
       },
+      {
+        path: '/bills-and-payments',
+        element: <TransactionHistory />,
+      },
+      {
+        path: '/my-stats',
+        element: <TransactionHistory />,
+      },
     ]
   }
 ]);

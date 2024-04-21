@@ -7,34 +7,38 @@ function TransactionHistory() {
   const expenses = useSelector(state => state.expenses) || [];
   console.log(expenses);
 
-  if (expenses.length === 0) {
-    return <div>No transactions yet.</div>;
-  }
+  // if (expenses.length === 0) {
+  //   return <div>No transactions yet.</div>;
+  // }
 
+  const columns = [
+  {
+    title: 'Expense name',
+    dataIndex: 'expense-name',
+    key: 'expense-name',
+  },
+  {
+    title: 'Amount',
+    dataIndex: 'amount',
+    key: 'amount',
+  },
+];
+
+  const dataSource = expenses.map((expense, index) => {
+    if (!expense || !expense.description || !expense.amount) {
+      return null;
+    }
+    return {
+      key: index,
+      description: expense.description,
+      amount: expense.amount,
+    };
+  })
+        
   return (
-    <Table
-        width={300}
-        theme="dark"  
-        style={{ height: '100vh' }}     
-    >
-      <h2>Your Transaction History</h2>      
-      <div>
-      {expenses.map((expense, index) => {
-        if (!expense ||!expense.description ||!expense.amount) {
-          return null;
-        }
-
-        return (
-          <div key={index}>
-            <p>Description: {expense.description}</p>
-            <p>Amount: {expense.amount}</p>
-          </div>
-        );
-      })}
-    </div>
-    </Table>
-      
+    <Table dataSource={dataSource} columns={columns} />    
   )
+  
 }
 
 export default TransactionHistory
